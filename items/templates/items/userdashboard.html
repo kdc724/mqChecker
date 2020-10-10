@@ -1,0 +1,98 @@
+{% extends "items/base.html" %}
+
+{% load static %}
+
+{% block content %}
+  <!-- START HERE -->
+
+            <!-- STATUS SUMMARY  -->
+            <div class="row">
+
+              <div class="col-md-4 text-center mt-3 ">
+                <div class="card bg-warning mx-auto">
+                  <div class="card-body">
+                    
+                    <h1 class="pt-2"><i class="fas fa-tools mr-2"></i>{{ rejects}}</h1>
+                  </div><!-- END OF CARD BODY  -->
+                  <div class="card-footer">
+                    <strong>REJECT</strong> 
+                  </div>
+                  
+                </div><!-- END OF CARD  -->
+                
+              </div><!-- END OF COL-MD-4  -->
+
+              <div class="col-md-4 text-center mt-3">
+                <div class="card bg-info mx-auto">
+                  <div class="card-body">
+                    
+                    <h1 class="pt-2"><i class="fas fa-search-plus mr-2"></i>{{ monitor}}</h1>
+                  </div><!-- END OF CARD BODY  -->
+                  <div class="card-footer">
+                    <strong>MONITOR</strong> 
+                  </div>
+                  
+                </div><!-- END OF CARD  -->
+                
+              </div><!-- END OF COL-MD-4  -->
+
+              <div class="col-md-4 text-center mt-3">
+                <div class="card bg-success mx-auto">
+                  <div class="card-body">
+                    
+                    <h1 class="pt-2"><i class="far fa-check-square mr-2"></i>{{ passed }}</h1>
+                  </div><!-- END OF CARD BODY  -->
+                  <div class="card-footer">
+                    <strong>PASSED</strong> 
+                  </div>
+                  
+                </div><!-- END OF CARD  -->
+                
+              </div><!-- END OF COL-MD-4  -->
+              
+            </div><!-- END OF ROW  -->
+
+            <hr>
+
+           <!-- TABLE LATEST ITEMS  --> 
+            <div class="latest-table mt-4">
+              <h3 class="text-center mt-3 border-bottom">LATEST ITEMS</h3>
+              <a href="{% url 'export-csv' %}" class="btn btn-sm btn-brand2 m-3">Export to CSV</a>
+              <table class="table table-bordered" style="overflow-x:auto;" bgcolor="#fff">
+      
+              <thead class="bg-dark text-light">
+               <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Responsible Team</th>
+                    <th>Priority</th>
+                    <th>Checked By</th>
+               </tr>
+              </thead>
+
+            <tbody>
+              {% for item in items %}
+                <tr>
+                    <td><a href="{% url 'item-detail' item.id %}">{{ item.id }}</a></td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>{{ item.team }}</td>
+                    <td>{{ item.priority }}</td>
+                    <td>{{ item.checker }}</td>
+                </tr>
+              {% endfor %}
+            
+
+           </tbody>
+           </table>
+              
+
+           </div><!-- END OF TABLE LATEST ITEMS  -->
+
+
+
+       
+  
+
+  {% endblock %}

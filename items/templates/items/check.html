@@ -1,0 +1,85 @@
+{% extends "items/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- BANNER -->
+  <section id="banner-section" class="p-5">
+    <div class="dark-overlay">
+      <div class="row">
+        <div class="col">
+          <div class="container pt-5">
+            <h1>Check New Item</h1>
+            <p class="d-none d-md-block">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est eaque magni sit dolores. Nisi, dolor nam modi perspiciatis
+              consequatur soluta.</p>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+      <div class="container">
+
+      <!-- BREADCRUMB -->
+        <ol class="breadcrumb mt-4">
+            <li class="breadcrumb-item">
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">New Item</li>
+        </ol>
+        
+   
+
+      
+
+      <!-- ITEM CREATE AND UPDATE -->
+     <div class="row mt-4">
+        <div class="col-md-8 mx-auto">
+          <div class="card">
+            <div class="card-header text-center bg-dark">
+              
+            </div><!-- END OF CARD HEADER -->
+              <div class="card-body">
+                <form action="" method="POST"enctype="multipart/form-data">
+                  {% csrf_token %}
+            
+                <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Item Fields</legend>
+                {{ form|crispy }}
+                </fieldset>
+                  <div class="form-group">
+                    <button class="btn btn-success" type="submit"><i class="fas fa-save mr-2"></i>Save</button>
+                  </div>
+                </form>
+                
+              </div><!-- END OF CARD BODY -->
+             <div class="card-footer bg-warning">
+               
+             </div><!-- END OF CARD FOOTER -->
+            
+          </div><!-- END OF CARD -->
+        </div><!-- END OF COL-MD-8 -->
+        
+      </div><!-- END OF ROW -->
+      <!-- /.row -->
+
+      <hr>
+    
+
+    </div>
+    <!-- /.container -->
+
+
+        </div><!---END OF CONTENT--->
+    </div><!---END OF WRAPPER--->
+  
+
+
+{% endblock %}

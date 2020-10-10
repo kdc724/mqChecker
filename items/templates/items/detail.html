@@ -1,0 +1,90 @@
+{% extends "items/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <!-- BANNER -->
+  <section id="banner-section" class="p-5">
+    <div class="dark-overlay">
+      <div class="row">
+        <div class="col">
+          <div class="container pt-5">
+            <h1>Item ID: {{ item.id }} - {{ item.title }}</h1>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+      <div class="container">
+
+
+        <!-- BREADCRUMB -->
+        <ol class="breadcrumb mt-4">
+            <li class="breadcrumb-item">
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">{{ item.title }}</li>
+        </ol>
+        
+   
+
+      
+
+      <!-- DETAIL ITEM -->
+     <div class="row mt-4">
+
+        <div class="col-md-5">
+          <a href="#">
+            {% if item.photo_main %}
+            <img class="img-fluid rounded mb-3 mb-md-0" src="{{ item.photo_main.url }}" alt="">
+            {% endif %}
+          </a>
+        </div>
+        <div class="col-md-7">
+          <h3 class="border-bottom">{{ item.title }}</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <p>ID: <span>{{ item.id }}</span></p>
+              <p>Category: <span>{{ item.category }}</span></p>
+              <p>Condition: <span>{{ item.condition }}</span> </p>
+              <p>Status: <span>{{ item.status }}</span> </p>
+              <p>Team: <span>{{ item.team }}</span> </p>
+            </div>
+
+            <div class="col-md-6">
+              <p>Checked by: <span>{{ item.checker }}</span> </p>
+              <p>Date Checked: <span>{{ item.date_checked }}</span> </p>
+              <p>Priority: <span>{{ item.priority }}</span> </p>
+            </div>
+          </div>
+      
+          <a class="btn btn-info" href="{% url 'item-update' item.id %}"><i class="mr-2 fas fa-pen"></i>Update</a>
+          <a class="btn btn-danger mr-2" href="{% url 'item-delete' item.id %}"><i class="mr-2 fas fa-trash-alt"></i>Delete</a>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <hr>
+
+      <div>
+        <h3>Description and Comments:</h3>
+        <p>{{ item.comments }}</p>
+        
+      </div>
+
+    
+
+    </div>
+    <!-- /.container -->
+
+
+        </div><!---END OF CONTENT--->
+    </div><!---END OF WRAPPER--->
+
+{% endblock %}
+

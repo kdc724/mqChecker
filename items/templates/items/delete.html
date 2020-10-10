@@ -1,0 +1,59 @@
+{% extends "items/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+
+    <!-- BREADCRUMB -->
+  <ol class="breadcrumb mt-4">
+      <li class="breadcrumb-item">
+          <a href="{% url 'dashboard' %}">Dashboard</a>
+      </li>
+      <li class="breadcrumb-item active">Delete Item</li>
+  </ol>
+  
+
+    <div class="row mt-4">
+     <div class="col-md-10 mx-auto">
+        <div class="card">
+          <div class="card-header text-center bg-dark">
+        
+          </div><!-- END OF CARD HEADER -->
+          <div class="card-body">
+          <form action="{% url 'item-delete' item.id  %}" method="POST">
+            {% csrf_token %}
+          <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Delete Item</legend>
+          <h3>Are you sure you want to delete ID 9 - Broken Damage?</h3>
+          </fieldset>
+            <div class="form-group">
+              <button class="btn btn-danger" type="submit"><i class="mr-2 fas fa-trash-alt"></i>Delete</button>
+              <a class="btn btn-outline-secondary" href="">Cancel</a>
+            </div>
+          </form>
+          
+        </div><!-- END OF CARD BODY -->
+       <div class="card-footer bg-warning">
+         
+       </div><!-- END OF CARD FOOTER -->
+      
+    </div><!-- END OF CARD -->
+  </div><!-- END OF COL-MD-10 -->
+  
+</div><!-- END OF ROW -->
+<!-- /.row -->
+
+<hr>
+
+
+</div>
+<!-- /.container -->
+
+
+  </div><!---END OF CONTENT--->
+</div><!---END OF WRAPPER--->
+
+
+{% endblock %}

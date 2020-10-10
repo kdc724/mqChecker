@@ -1,0 +1,76 @@
+{% extends "items/base.html" %}
+
+
+
+{% block content %}
+
+
+<section id="banner-section" class="p-5">
+<div class="dark-overlay">
+  <div class="row">
+    <div class="col">
+      <div class="container pt-5">
+        <h1>{{ user.username }}'s' Profile</h1>
+        <p class="d-none d-md-block">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est eaque magni sit dolores. Nisi, dolor nam modi perspiciatis
+          consequatur soluta.</p>
+          
+
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+  <div class="container">
+
+      <!-- BREADCRUMB -->
+    <ol class="breadcrumb mt-4">
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Profile</li>
+    </ol>
+    
+
+
+  <!-- PROFILE SECTION -->
+ <section id="profile-section">
+ <!-- ITEM CREATE AND UPDATE -->
+   <div class="row">
+     <div class="col-md-7 mx-auto">
+             <div class="row mx-auto">
+                <div class="col-md mt-2 ">
+                  {% if user.profile.profile_pic %}
+                  <img id="profile-pic" class="rounded-circle p-3" src="{{ user.profile.profile_pic.url }}">
+                  {% endif %}
+            </div><!-- END OF COL-MD-4 -->
+
+             <div class="col-md mt-3">
+                  <p>NAME: {{ user.username}}</p>
+                  {% if user.profile.position %}
+                  <p>POSITION: {{ user.profile.position }}</p>
+                  {% endif %}
+                  {% if user.email %}
+                  <p>EMAIL: {{ user.email }}</p>
+                  {% endif %}
+                  {% if user.profile.phone %}
+                  <p>PHONE: {{ user.profile.phone }}</p>
+                  {% endif %}
+             </div><!-- END OF COL-MD-8 -->
+    
+              </div><!-- END OF ROW -->
+     </div><!-- END OF COL-MD-7 -->
+         
+   </div><!-- END OF ROW -->
+     
+
+  <!-- /.row -->
+ </section>
+
+  <hr>
+
+</div>
+
+{% endblock %}

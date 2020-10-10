@@ -1,0 +1,62 @@
+#header {
+    
+    padding: 10px 40px;
+    background: #000;
+    color: #FBC02D;
+    overflow: hidden;
+}
+
+
+div.breadcrumbs {
+    background: #FBC02D;
+    padding: 10px 40px;
+    border: none;
+    font-size: 14px;
+    color: #000;
+    text-align: left;
+}
+
+
+div.breadcrumbs a {
+    
+    color: #000;
+    
+}
+
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #FBC02D;
+    color: #000;
+    
+}
+
+
+.button, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover {
+    background: #000;
+    color: #FBC02D;
+    
+}
+
+
+.button.default, input[type=submit].default, .submit-row input.default {
+   
+    background: #0e6925;
+}
+
+.button.default:hover, input[type=submit].default:hover, .submit-row input.default:hover {
+   
+    background: #0c5a20;
+    color: #000;
+}
+
+
+.module h2, .module caption, .inline-group h2 {
+    
+    background: #FBC02D;
+    color: #000!important;
+}
+
+
+a:link, a:visited {
+    color: #000;
+}

@@ -1,0 +1,117 @@
+{% extends "items/base.html" %}
+
+{% load static %}
+
+{% block content %}
+      <!-- BANNER -->
+  <section id="banner-section" class="p-5">
+    <div class="dark-overlay">
+      <div class="row">
+        <div class="col">
+          <div class="container pt-5">
+            <h1>Announcements</h1>
+            <p class="d-none d-md-block">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est eaque magni sit dolores. Nisi, dolor nam modi perspiciatis
+              consequatur soluta.</p>
+              
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+      <div class="container">
+
+      	<!-- BREADCRUMB -->
+        <ol class="breadcrumb mt-4">
+            <li class="breadcrumb-item">
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Announcement</li>
+        </ol>
+        
+
+
+      <!-- Page Heading -->
+      <h1 class="my-4">Latest Announcements:</h1>
+
+    {% for announcement in announcements %}  
+      <!-- Project One -->
+     <!-- ITEM CREATE AND UPDATE -->
+     <div class="row mt-4">
+        <div class="col-md-9 mx-auto">
+          <div class="card">
+            <div class="card-header text-center bg-dark">
+              <span class="fas fa-bullhorn text-warning justify-content-start mr-3"></span>
+            </div><!-- END OF CARD HEADER -->
+              <div class="card-body">
+              	<h3 class="card-title">{{ announcement.title }}</h3>
+                <p>
+                  {{ announcement.content }}.</p>
+
+              </div><!-- END OF CARD BODY -->
+             <div class="card-footer bg-warning">
+               <small> {{ announcement.created_by }},  {{ announcement.date_created }}</small> 
+             </div><!-- END OF CARD FOOTER -->
+            
+          </div><!-- END OF CARD -->
+        </div><!-- END OF COL-MD-8 -->
+        
+      </div><!-- END OF ROW -->
+      <!-- /.row -->
+
+      {% endfor %}
+      
+
+      <hr>
+
+      
+
+
+
+      <!-- Pagination -->
+      {% if announcements.has_other_pages %}
+      <ul class="pagination justify-content-center">
+        {% if items.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{announcements.previous_page_number}}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        {% else %}
+        <li class="page-item-disabled">
+          <a class="page-link">&laquo;</a>
+        </li>
+        {% endif %}
+        {% for i in announcements.paginator.page_range %}
+            {% if announcements.number == i %}
+            <li class="page-item active">
+              <a class="page-link" href="#">{{i}}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{i}}">{{i}}</a>
+            </li>
+            {% endif %}
+          {% endfor %}
+          {% if announcements.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{listings.next_page_number}}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-link">&raquo;</a>
+          </li>
+          {% endif %}
+      </ul>
+      {% endif %}
+
+    </div>
+
+{% endblock %}
